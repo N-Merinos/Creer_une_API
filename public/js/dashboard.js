@@ -21,7 +21,7 @@ document.getElementById('currentDate').textContent = today.toLocaleDateString('f
 // Récupère les réservations en cours
 const loadReservations = async () => {
   try {
-    const response = await fetch('http://localhost:3000/catways', {
+    const response = await fetch('https://port-russel-2m8c.onrender.com/catways', {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     const catways = await response.json();
@@ -32,7 +32,7 @@ const loadReservations = async () => {
 
     // Pour chaque catway on récupère ses réservations
     for (const catway of catways) {
-      const resResponse = await fetch(`http://localhost:3000/catways/${catway.catwayNumber}/reservations`, {
+      const resResponse = await fetch(`https://port-russel-2m8c.onrender.com/catways/${catway.catwayNumber}/reservations`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const reservations = await resResponse.json();
@@ -62,7 +62,7 @@ const loadReservations = async () => {
 // Déconnexion
 document.getElementById('logoutBtn').addEventListener('click', async (e) => {
   e.preventDefault();
-  await fetch('http://localhost:3000/logout');
+  await fetch('https://port-russel-2m8c.onrender.com/logout');
   localStorage.removeItem('token');
   window.location.href = '/index.html';
 });

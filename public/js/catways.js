@@ -4,7 +4,7 @@ if (!token) window.location.href = '/index.html';
 
 // Charge la liste des catways
 const loadCatways = async () => {
-  const response = await fetch('http://localhost:3000/catways', {
+  const response = await fetch('https://port-russel-2m8c.onrender.com/catways', {
     headers: { 'Authorization': `Bearer ${token}` }
   });
   const catways = await response.json();
@@ -31,7 +31,7 @@ document.getElementById('catwayForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const message = document.getElementById('catwayMessage');
 
-  const response = await fetch('http://localhost:3000/catways', {
+  const response = await fetch('https://port-russel-2m8c.onrender.com/catways', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ document.getElementById('catwayForm').addEventListener('submit', async (e) => {
 const deleteCatway = async (id) => {
   if (!confirm('Confirmer la suppression ?')) return;
 
-  await fetch(`http://localhost:3000/catways/${id}`, {
+  await fetch(`https://port-russel-2m8c.onrender.com/catways/${id}`, {
     method: 'DELETE',
     headers: { 'Authorization': `Bearer ${token}` }
   });
@@ -65,7 +65,7 @@ const editCatway = async (id, currentState) => {
   const newState = prompt('Nouvel état du catway :', currentState);
   if (!newState) return;
 
-  await fetch(`http://localhost:3000/catways/${id}`, {
+  await fetch(`https://port-russel-2m8c.onrender.com/catways/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const editCatway = async (id, currentState) => {
 // Déconnexion
 document.getElementById('logoutBtn').addEventListener('click', async (e) => {
   e.preventDefault();
-  await fetch('http://localhost:3000/logout');
+  await fetch('https://port-russel-2m8c.onrender.com/logout');
   localStorage.removeItem('token');
   window.location.href = '/index.html';
 });

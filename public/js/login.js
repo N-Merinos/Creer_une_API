@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
   try {
     // On envoie les identifiants à l'API
-    const response = await fetch('http://localhost:3000/login', {
+    const response = await fetch('https://port-russel-2m8c.onrender.com/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })

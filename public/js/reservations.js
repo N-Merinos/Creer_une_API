@@ -8,14 +8,14 @@ const loadReservations = async () => {
   tbody.innerHTML = '';
 
   // On récupère d'abord tous les catways
-  const catwaysResponse = await fetch('http://localhost:3000/catways', {
+  const catwaysResponse = await fetch('https://port-russel-2m8c.onrender.com/catways', {
     headers: { 'Authorization': `Bearer ${token}` }
   });
   const catways = await catwaysResponse.json();
 
   // Pour chaque catway on récupère ses réservations
   for (const catway of catways) {
-    const resResponse = await fetch(`http://localhost:3000/catways/${catway.catwayNumber}/reservations`, {
+    const resResponse = await fetch(`https://port-russel-2m8c.onrender.com/catways/${catway.catwayNumber}/reservations`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     const reservations = await resResponse.json();
@@ -43,7 +43,7 @@ document.getElementById('reservationForm').addEventListener('submit', async (e) 
   const message = document.getElementById('reservationMessage');
   const catwayNumber = document.getElementById('catwayNumber').value;
 
-  const response = await fetch(`http://localhost:3000/catways/${catwayNumber}/reservations`, {
+  const response = await fetch(`https://port-russel-2m8c.onrender.com/catways/${catwayNumber}/reservations`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ document.getElementById('reservationForm').addEventListener('submit', async (e) 
 const deleteReservation = async (catwayNumber, reservationId) => {
   if (!confirm('Confirmer la suppression ?')) return;
 
-  await fetch(`http://localhost:3000/catways/${catwayNumber}/reservations/${reservationId}`, {
+  await fetch(`https://port-russel-2m8c.onrender.com/catways/${catwayNumber}/reservations/${reservationId}`, {
     method: 'DELETE',
     headers: { 'Authorization': `Bearer ${token}` }
   });
@@ -76,7 +76,7 @@ const deleteReservation = async (catwayNumber, reservationId) => {
 // Déconnexion
 document.getElementById('logoutBtn').addEventListener('click', async (e) => {
   e.preventDefault();
-  await fetch('http://localhost:3000/logout');
+  await fetch('https://port-russel-2m8c.onrender.com/logout');
   localStorage.removeItem('token');
   window.location.href = '/index.html';
 });
