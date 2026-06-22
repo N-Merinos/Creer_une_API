@@ -18,6 +18,9 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Servir les fichiers statiques du dossier public
+app.use(express.static('public'));
+
 // Routes publiques (pas besoin d'être connecté)
 app.use('/', authRoutes);
 
