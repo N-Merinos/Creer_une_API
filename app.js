@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
+const authMiddleware = require('./middlewares/auth');
 
 // Import des routes
 const authRoutes = require('./routes/auth');
@@ -17,11 +18,13 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Branchement des routes
+// Routes publiques (pas besoin d'être connecté)
 app.use('/', authRoutes);
-app.use('/catways', catwayRoutes);
-app.use('/catways/:id/reservations', reservationRoutes);
-app.use('/users', userRoutes);
+
+// Routes protégées (token JWT obligatoire)
+app.use('/catways', authMiddleware, catwayRoutes);
+app.use('/catways/:id/reservations', authMiddleware, reservationRoutes);
+app.use('/users', authMiddleware, userRoutes);
 
 // Démarrage du serveur
 const PORT = process.env.PORT || 3000;
