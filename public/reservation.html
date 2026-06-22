@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservations - Port Russell</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Port de Plaisance Russell</h1>
+  </header>
+
+  <nav>
+    <a href="/dashboard.html">Tableau de bord</a>
+    <a href="/catways.html">Catways</a>
+    <a href="/users.html">Utilisateurs</a>
+    <a href="/api-docs">Documentation API</a>
+    <a href="#" id="logoutBtn">Se déconnecter</a>
+  </nav>
+
+  <main>
+    <section class="section">
+      <h2>Ajouter une réservation</h2>
+      <form id="reservationForm">
+        <div class="form-group">
+          <label for="catwayNumber">Numéro de catway</label>
+          <input type="number" id="catwayNumber" required>
+        </div>
+        <div class="form-group">
+          <label for="clientName">Nom du client</label>
+          <input type="text" id="clientName" required>
+        </div>
+        <div class="form-group">
+          <label for="boatName">Nom du bateau</label>
+          <input type="text" id="boatName" required>
+        </div>
+        <div class="form-group">
+          <label for="startDate">Date de début</label>
+          <input type="date" id="startDate" required>
+        </div>
+        <div class="form-group">
+          <label for="endDate">Date de fin</label>
+          <input type="date" id="endDate" required>
+        </div>
+        <button type="submit">Ajouter</button>
+        <p id="reservationMessage"></p>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2>Liste des réservations</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Catway</th>
+            <th>Client</th>
+            <th>Bateau</th>
+            <th>Début</th>
+            <th>Fin</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="reservationsBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/reservations.js"></script>
+</body>
+</html>
