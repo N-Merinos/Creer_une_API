@@ -1,12 +1,43 @@
 const express = require('express');
-
 const router = express.Router(); // Mini-app Express pour grouper les routes d'authentification
-
 const bcrypt = require('bcrypt');
-
 const jwt = require('jsonwebtoken');
-
 const User = require('../models/user');
+
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Connexion d'un utilisateur
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Connexion réussie, retourne un token JWT
+ *       401:
+ *         description: Email ou mot de passe incorrect
+ */
+
+/**
+ * @swagger
+ * /logout:
+ *   get:
+ *     summary: Déconnexion d'un utilisateur
+ *     tags: [Auth]
+ *     responses:
+ *       200:
+ *         description: Déconnexion réussie
+ */
 
 // POST /login - Connexion d'un utilisateur
 router.post('/login', async (req, res) => {

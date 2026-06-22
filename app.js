@@ -11,12 +11,18 @@ const userRoutes = require('./routes/users');
 
 const app = express();
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
+
 // Connexion à MongoDB
 connectDB();
 
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Documentation Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Servir les fichiers statiques du dossier public
 app.use(express.static('public'));
