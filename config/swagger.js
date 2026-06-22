@@ -9,6 +9,12 @@ const options = {
       description: 'API de gestion des réservations de catways du port de plaisance Russell',
     },
     servers: [
+      
+      {
+    url: 'https://port-russel-2m8c.onrender.com',
+    description: 'Serveur de production',
+      },
+
       {
         url: 'http://localhost:3000',
         description: 'Serveur local',
